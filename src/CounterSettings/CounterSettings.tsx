@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect} from "react";
 import {SetMaxValueAC, SetMinValueAC, SetValueAC, useDispatch} from "../redux/counter-reducer";
 import {useSelector} from "react-redux";
 import {RootStateType} from "../redux/store";
@@ -22,6 +22,15 @@ export const CounterSettings = () => {
         maxValue: counter.maxValue
     }
 
+    useEffect(() => {
+        function saveSettingsState<T>(key: string, settingsState: T) {
+            const stateAsString = JSON.stringify(settingsState);
+            localStorage.setItem(key, stateAsString)
+        }
+
+        saveSettingsState<SettingsStateType>('start value', {minValue: settingsState.minValue, maxValue: settingsState.maxValue})
+    }, [counter.minValue, counter.maxValue])
+
     let setValue = useCallback(() => dispatch(SetValueAC()), [dispatch])
     let setMinValue = useCallback((inputMinValue: number) => dispatch(SetMinValueAC(inputMinValue)), [dispatch])
     let setMaxValue = useCallback((inputMaxValue: number) => dispatch(SetMaxValueAC(inputMaxValue)), [dispatch])
@@ -36,4 +45,3 @@ export const CounterSettings = () => {
         </div>
     )
 }
-// <Button onClick={} title={'SET'}

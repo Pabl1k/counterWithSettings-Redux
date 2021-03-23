@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../redux/store";
 import {InitialStateType} from "../redux/counter-reducer-types";

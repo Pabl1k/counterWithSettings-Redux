@@ -5,8 +5,7 @@ export type StoreType = typeof store
 export type RootStateType = ReturnType<typeof rootReducer>
 
 const rootReducer = combineReducers({
-        counter: counterReducer,
-
+        counter: counterReducer
     }
 )
 

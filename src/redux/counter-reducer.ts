@@ -21,14 +21,12 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
         // settings
         case "SET_MAX_VALUE": {
             let stateCopy = {...state}
-            let max = action.inputMaxValue
-            stateCopy.maxValue = max
+            stateCopy.maxValue = action.inputMaxValue
             return stateCopy
         }
         case "SET_MIN_VALUE": {
             let stateCopy = {...state}
-            let min = action.inputMinValue
-            stateCopy.minValue = min
+            stateCopy.minValue = action.inputMinValue
             return stateCopy
         }
         case "SET_VALUE": {
@@ -38,7 +36,14 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
             }
         }
         default:
-            return state
+            let restoreState = <T>(key: string, defaultState: T) => {
+                const stateAsString = localStorage.getItem(key);
+                if (stateAsString !== null) defaultState = JSON.parse(stateAsString) as T;
+                return defaultState;
+            }
+
+            const save = restoreState('start value', {minValue: state.minValue, maxValue: state.maxValue});
+            return {...state, maxValue: save.maxValue, minValue: save.minValue, currentValue: save.minValue};
     }
 }
 
