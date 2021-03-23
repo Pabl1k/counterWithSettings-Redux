@@ -3,8 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../redux/store";
 import {InitialStateType} from "../redux/counter-reducer-types";
 import {IncDisplayValueAC, ResetDisplayValueAC} from "../redux/counter-reducer";
+import {Display} from "./Display/Display";
+import {Button} from "./Display/Button";
 
-export const Display = () => {
+export const CounterDisplay = () => {
     const dispatch = useDispatch()
 
     const counter = useSelector<RootStateType, InitialStateType>(state => state.counter)
@@ -16,11 +18,12 @@ export const Display = () => {
         dispatch(ResetDisplayValueAC())
     }
 
-    return(
+    return (
         <div>
-            {counter.currentValue}
-            <button onClick={incValue}>INC</button>
-            <button onClick={resetValue}>RESET</button>
+            <Display counterValue={counter.currentValue}/>
+            <Button title={'INC'} onClick={incValue} disable={counter.currentValue === counter.maxValue}/>
+            <Button title={'RESET'} onClick={resetValue} disable={counter.currentValue === counter.minValue}/>
+
         </div>
     )
 }
