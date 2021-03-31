@@ -1,0 +1,25 @@
+.valueSign{
+    font-size: 30px;
+    color: red;
+    margin-left: 35%;
+}
+
+.minInput input{
+    font-size: 15px;
+}
+
+.minInputError input{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.maxInput input {
+    font-size: 15px;
+}
+
+.maxInputError input {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}

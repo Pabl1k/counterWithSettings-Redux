@@ -6,7 +6,9 @@ import {
 export const initialState: InitialStateType = {
     minValue: 0,
     maxValue: 5,
-    currentValue: 0
+    currentValue: 0,
+    incorrectValueMessage: 'Incorrect value',
+    setMessage: 'Enter value and press "SET"'
 }
 
 export const counterReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {

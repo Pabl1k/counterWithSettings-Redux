@@ -10,4 +10,6 @@ export type InitialStateType = {
     minValue: number
     maxValue: number
     currentValue: number
+    incorrectValueMessage: string
+    setMessage: string
 }

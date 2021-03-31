@@ -5,6 +5,7 @@ import {RootStateType} from "../redux/store";
 import {InitialStateType} from "../redux/counter-reducer-types";
 import {SettingsDisplay} from "./SettingsDisplay/SettingsDisplay";
 import {Button} from "../CounterDisplay/Display/Button";
+import s from './CounterSettings.module.css'
 
 export const CounterSettings = () => {
 
@@ -28,7 +29,10 @@ export const CounterSettings = () => {
             localStorage.setItem(key, stateAsString)
         }
 
-        saveSettingsState<SettingsStateType>('start value', {minValue: settingsState.minValue, maxValue: settingsState.maxValue})
+        saveSettingsState<SettingsStateType>('start value', {
+            minValue: settingsState.minValue,
+            maxValue: settingsState.maxValue
+        })
     }, [counter.minValue, counter.maxValue])
 
     let setValue = useCallback(() => dispatch(SetValueAC()), [dispatch])
@@ -39,9 +43,14 @@ export const CounterSettings = () => {
             <SettingsDisplay minValue={counter.minValue}
                              maxValue={counter.maxValue}
                              changeMinValue={setMinValue}
-                             changeMaxValue={setMaxValue}/>
-            <Button onClick={setValue} title={'SET'} />
-
+                             changeMaxValue={setMaxValue}
+            />
+            <div className={s.setButton}>
+            <Button onClick={setValue}
+                    title={'SET'}
+                    disable={counter.minValue >= counter.maxValue || counter.minValue < 0}
+                    />
+            </div>
         </div>
     )
 }

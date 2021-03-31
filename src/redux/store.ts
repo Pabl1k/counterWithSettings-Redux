@@ -1,7 +1,6 @@
 import {combineReducers, createStore} from "redux";
 import {counterReducer} from "./counter-reducer";
 
-export type StoreType = typeof store
 export type RootStateType = ReturnType<typeof rootReducer>
 
 const rootReducer = combineReducers({

@@ -5,6 +5,7 @@ import {InitialStateType} from "../redux/counter-reducer-types";
 import {IncDisplayValueAC, ResetDisplayValueAC} from "../redux/counter-reducer";
 import {Display} from "./Display/Display";
 import {Button} from "./Display/Button";
+import s from './CounterDisplay.module.css'
 
 export const CounterDisplay = () => {
     const dispatch = useDispatch()
@@ -20,10 +21,25 @@ export const CounterDisplay = () => {
 
     return (
         <div>
-            <Display counterValue={counter.currentValue}/>
-            <Button title={'INC'} onClick={incValue} disable={counter.currentValue === counter.maxValue}/>
-            <Button title={'RESET'} onClick={resetValue} disable={counter.currentValue === counter.minValue}/>
+            <div className={s.border}>
+                <Display counterValue={counter.currentValue}
+                         maxValue={counter.maxValue}
+                         minValue={counter.minValue}
+                         incorrectValueMessage={counter.incorrectValueMessage}
+                         setMessage={counter.setMessage}
+                />
+            </div>
+            <div className={s.buttonGroup}>
+                <Button title={'INC'}
+                        onClick={incValue}
+                        disable={counter.currentValue === counter.maxValue}
 
+                />
+                <Button title={'RESET'}
+                        onClick={resetValue}
+                        disable={counter.currentValue === counter.minValue}
+                />
+            </div>
         </div>
     )
 }

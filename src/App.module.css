@@ -1,0 +1,17 @@
+.app {
+    display: flex;
+
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container {
+    width: 470px;
+    height: 300px;
+
+    border: solid #61dafb;
+    border-radius: 15px;
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+}

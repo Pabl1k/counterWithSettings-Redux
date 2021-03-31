@@ -1,0 +1,6 @@
+.setButton{
+    display: flex;
+    justify-content: center;
+    outline: none;
+}
+

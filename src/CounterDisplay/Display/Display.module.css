@@ -1,0 +1,13 @@
+.value {
+    font-size: 50px;
+    font-family: "Source Code Pro";
+    padding-top: 20px;
+    color: #00fd01;
+}
+
+.endValue{
+    font-size: 70px;
+    font-family: "Source Code Pro";
+    padding-top: 10px;
+    color: red;
+}
